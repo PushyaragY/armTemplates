@@ -45,13 +45,14 @@
         },
         "zone": {
             "type": "string",
-            "defaultValue": "2",
+            "defaultValue": "1",
             "metadata": {
               "description": "Availabilityzone of the VM"
             }
         },
         "datadiskArmId": {
             "type": "string",
+            "defaultValue": "/subscriptions/0f55bb56-6089-4c7e-9306-41fb78fc5844/resourceGroups/premiumV2CanaryRG-22032022/providers/Microsoft.Compute/disks/PremiumV2CanaryDisk",
             "metadata": {
               "description": "armId of PremiumV2 datadisk"
             }
@@ -59,11 +60,11 @@
     },
     "variables": {
         "diagnosticsStorageAccountName": "[concat(uniquestring(resourceGroup().id), 'sawinvm')]",
-        "nicName": "myVMNic2",
+        "nicName": "myVMNic3",
         "addressPrefix": "10.1.16.0/24",
         "subnetName": "Subnet",
         "subnetPrefix": "10.1.16.0/24",
-        "publicIPAddressName": "myPublicIP2",
+        "publicIPAddressName": "myPublicIP3",
         "virtualNetworkName": "MyVNET",
         "nsgId": "[resourceId(resourceGroup().name, 'Microsoft.Network/networkSecurityGroups', variables('networkSecurityGroupName'))]",
         "vnetId": "[resourceId(resourceGroup().name, 'Microsoft.Network/virtualNetworks', variables('virtualNetworkName'))]",
@@ -76,6 +77,9 @@
             "apiVersion": "2019-02-01",
             "name": "[variables('publicIpAddressName')]",
             "location": "[parameters('location')]",
+            "zones": [
+                "[parameters('zone')]"
+            ],
             "sku": {
                 "name": "Basic"
             },

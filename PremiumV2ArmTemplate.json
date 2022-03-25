@@ -4,14 +4,9 @@
     "parameters": {
         "diskName": {
             "type": "String",
+            "defaultValue": "PremiumV2CanaryDisk",
             "metadata": {
                 "description": "The name of the disk"
-            }
-        },
-        "stampName": {
-            "type": "String",
-            "metadata": {
-                "description": "The name of the stamp"
             }
         },
         "location": {
@@ -23,7 +18,7 @@
         },
         "zone": {
             "type": "string",
-            "defaultValue": "2",
+            "defaultValue": "1",
             "metadata": {
               "description": "Availabilityzone of the Disk"
             }
@@ -78,8 +73,7 @@
             },
             "properties": {
                 "creationData": {
-                    "createOption": "Empty",
-                    "StorageStampName": "[parameters('stampName')]"
+                    "createOption": "Empty"
                 },
                 "diskSizeGB": "[parameters('diskSizeInGB')]",
                 "diskIOPSReadWrite": "[parameters('diskIOPS')]",
